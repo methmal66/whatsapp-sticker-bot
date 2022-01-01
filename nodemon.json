@@ -1,0 +1,6 @@
+{
+   "quiet": true,
+   "exec": "ts-node src/index.ts",
+   "ignore": ["node_modules", "test", "build", "dist"],
+   "watch": ["src", "views"]
+}
