@@ -2,14 +2,17 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import Subscriber from './db'
 
-const app = express()
+const PORT = process.env.PORT || 8000
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
+const app = express()
 
-app.get('/', (req, res) => {
-   res.status(200).send('Hello World')
+app.set('view engine', 'ejs')
+
+app.get('/subscribe', (req, res) => {
+   res.status(200).render('subscribe')
 })
 
-app.post('/subscribe', urlEncodedParser, (req, res) => {
+app.post('/api/subscribe', urlEncodedParser, (req, res) => {
    const doc = new Subscriber({
       email: req.body.email,
       frequency: req.body.frequency,
@@ -20,7 +23,6 @@ app.post('/subscribe', urlEncodedParser, (req, res) => {
    })
 })
 
-const PORT = process.env.PORT || 8000
 app.listen(PORT, () => {
    console.log(`Server is listening at localhost:${PORT}`)
 })
