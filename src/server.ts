@@ -1,11 +1,10 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import jimp from 'jimp';
 import wrapText from 'wrap-text';
 import path from 'path';
 import moment from 'moment';
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8000;
 const app = express();
 
 app.get('/api', async (req, res) => {
