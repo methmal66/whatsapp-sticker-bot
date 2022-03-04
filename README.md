@@ -7,6 +7,8 @@ Simple typescript template with jest babel and eslintAPI to automate the process
 ## How to use
 Host it your self in a free linode server or use this [demo](http://sticker.whatsapp.bot.sanujamethmal.com)
 
+### Self Host
+`docker run -p 80:8000 -d methmal66/whatsapp-sticker-bot`
 ### Example usage of the above demo
 `http://sticker.whatsapp.bot.sanujamethmal.com?text=Hello+World&fontColor=red`
 ## Inputs
