@@ -5,4 +5,4 @@ COPY yarn.lock ./
 COPY ./build .
 RUN yarn install --production=true
 EXPOSE 8000
-CMD ["yarn","start"]
+CMD ["node","server.js"]
