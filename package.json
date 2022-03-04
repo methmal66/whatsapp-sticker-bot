@@ -1,6 +1,7 @@
 {
-   "name": "typescript-template",
-   "description": "Simple typescript template with jest babel and eslint",
+   "name": "@methmal/whatsapp-sticker-bot",
+   "description": "API to automate the process of generating whatsapp stickers. It helps to get rid of sticker apps which shows annoying ads.",
+   "version": "1.0.0",
    "private": false,
    "repository": {
       "type": "git",
