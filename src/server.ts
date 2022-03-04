@@ -5,7 +5,7 @@ import wrapText from 'wrap-text';
 import path from 'path';
 import moment from 'moment';
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 80;
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const app = express();
 
