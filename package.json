@@ -1,7 +1,7 @@
 {
    "name": "@methmal/whatsapp-sticker-bot",
    "description": "API to automate the process of generating whatsapp stickers. It helps to get rid of sticker apps which shows annoying ads.",
-   "version": "1.0.0",
+   "version": "1.0.1",
    "private": false,
    "repository": {
       "type": "git",
