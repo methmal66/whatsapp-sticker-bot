@@ -2,6 +2,7 @@ import express from 'express';
 import jimp from 'jimp';
 import wrapText from 'wrap-text';
 import moment from 'moment';
+import path from 'path';
 
 const PORT = process.env.PORT || 8000;
 const app = express();
@@ -17,13 +18,12 @@ app.get('/api', async (req, res) => {
 
    const image = await new jimp(width, height, 0x0 /*transparent*/);
    const font = await jimp.loadFont(jimp.FONT_SANS_32_BLACK);
-   const outputPath =
-      __dirname +
-      '../assets/static' +
-      text +
+   const fileName =
+      text.replace(' ', '_').replace('\n', '_') +
       '_' +
       moment().format('YYYY-MM-DD_HH:mm:ss') +
       '.png';
+   const outputPath = path.join(__dirname, '..', 'assets', 'static', fileName);
 
    for (let i = 0; i < lines.length; i++) {
       const y = i * FONT_SIZE;
