@@ -19,22 +19,15 @@
       "@types/express": "^4.17.13",
       "@types/jest": "^26.0.19",
       "@types/node": "^14.14.14",
-      "@typescript-eslint/eslint-plugin": "^4.11.0",
-      "@typescript-eslint/parser": "^4.11.0",
       "babel-jest": "^26.6.3",
       "core-js": "^3.8.1",
-      "eslint": "^7.16.0",
-      "eslint-plugin-import": "^2.22.1",
       "jest": "^26.6.3"
    },
    "scripts": {
       "start": "node build/server.js",
       "dev": "nodemon",
       "build": "tsc -p .",
-      "test": "jest --no-cache",
-      "lint": "yarn lint:types && yarn lint:ci",
-      "lint:types": "yarn tsc --noEmit -p .",
-      "lint:ci": "eslint . --ext .tsx,.ts"
+      "test": "jest --no-cache"
    },
    "dependencies": {
       "express": "^4.17.2",
