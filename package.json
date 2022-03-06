@@ -31,7 +31,6 @@
    },
    "dependencies": {
       "express": "^4.17.2",
-      "jimp": "^0.16.1",
       "moment": "^2.29.1",
       "text2png": "^2.3.0",
       "typescript": "^4.6.2",
