@@ -27,3 +27,13 @@ test('multiline text', () => {
       png
    );
 });
+
+test('colored text', () => {
+   const png = text2png('Hello World!', {
+      color: 'red',
+   });
+   fs.writeFileSync(
+      path.join(__dirname, '/../assets/images/colored_text.png'),
+      png
+   );
+});
