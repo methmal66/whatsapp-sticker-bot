@@ -1,38 +1,29 @@
 import express from 'express';
-import jimp from 'jimp';
 import wrapText from 'wrap-text';
 import moment from 'moment';
 import path from 'path';
+import text2png from 'text2png';
+import fs from 'fs';
 
 const PORT = process.env.PORT || 8000;
 const app = express();
 
 app.get('/api', async (req, res) => {
    const CHARACTERS_PER_LINE = 15;
-   const FONT_SIZE = 32;
-
    const text: string = wrapText(req.query.text, CHARACTERS_PER_LINE);
-   const lines = text.split('\n');
-   const height = FONT_SIZE * lines.length;
-   const width = FONT_SIZE * CHARACTERS_PER_LINE;
-
-   const image = await new jimp(width, height, 0x0 /*transparent*/);
-   const font = await jimp.loadFont(jimp.FONT_SANS_32_BLACK);
    const fileName =
       text.replace(' ', '_').replace('\n', '_') +
       '_' +
       moment().format('YYYY-MM-DD_HH:mm:ss') +
       '.png';
+
    const outputPath = path.join(__dirname, '..', 'assets', 'static', fileName);
-
-   for (let i = 0; i < lines.length; i++) {
-      const y = i * FONT_SIZE;
-      await image.print(font, 0, y, lines[i]);
-   }
-
-   image
-      .color([{ apply: 'xor', params: [req.query.fontColor] }])
-      .write(outputPath, () => res.status(200).sendFile(outputPath));
+   const png = text2png(text, {
+      font: '32px sans-serif',
+      color: req.query.fontColor,
+   });
+   fs.writeFileSync(outputPath, png);
+   res.status(200).sendFile(outputPath);
 });
 
 app.listen(PORT, () => {
