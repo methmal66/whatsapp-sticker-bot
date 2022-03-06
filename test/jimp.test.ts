@@ -1,7 +1,35 @@
+import fs from 'fs';
 import jimp from 'jimp';
 import path from 'path';
+import text2png from 'text2png';
 
-test('print text on an image', async () => {
+test('sample text png', () => {
+   const png = text2png('Hello World!');
+   fs.writeFileSync(
+      path.join(__dirname, '/../assets/images/sample_output.png'),
+      png
+   );
+});
+
+test('change font', () => {
+   const png = text2png('Hello World!', {
+      font: '32px sans-serif',
+   });
+   fs.writeFileSync(
+      path.join(__dirname, '/../assets/images/change_font.png'),
+      png
+   );
+});
+
+test('multiline text', () => {
+   const png = text2png('Hello World!\nSanuja Methmal here');
+   fs.writeFileSync(
+      path.join(__dirname, '/../assets/images/multiline.png'),
+      png
+   );
+});
+
+xtest('print text on an image', async () => {
    const image = await jimp.read(
       path.join(__dirname, '/../assets/images/whitebg.jpg')
    );
@@ -14,7 +42,7 @@ test('print text on an image', async () => {
 //text is not auto wrapping. it must mannually formated according to the image width
 //for font size 32, 15 chars can be printed in a single line
 //and 14 of lines like that can be printed on a single image
-test('long line on an image', async () => {
+xtest('long line on an image', async () => {
    const image = await jimp.read(
       path.join(__dirname, '/../assets/images/whitebg.jpg')
    );
@@ -24,7 +52,7 @@ test('long line on an image', async () => {
       .write(path.join(__dirname, '/../assets/images/textwrap.jpg'));
 });
 
-test('print multiple lines', async () => {
+xtest('print multiple lines', async () => {
    const image = await jimp.read(
       path.join(__dirname, '/../assets/images/whitebg.jpg')
    );
@@ -40,7 +68,7 @@ test('print multiple lines', async () => {
 font color along cannot be changed, color of the whole image is change at once
 so, when there is a background, its color too get change
 */
-test('print colored text', async () => {
+xtest('print colored text', async () => {
    const image = await jimp.read(
       path.join(__dirname, '/../assets/images/whitebg.jpg')
    );
@@ -55,7 +83,7 @@ test('print colored text', async () => {
 if there is no background, color change of the background is not noticable
 thats a one resone to have transparent text images, which means no background
 */
-test('text image with no background', async () => {
+xtest('text image with no background', async () => {
    //0x0 = 0 = rgba(0, 0, 0, 0) = transparent
    const image = await new jimp(450, 450, 0x0);
    const font = await jimp.loadFont(jimp.FONT_SANS_32_BLACK);
