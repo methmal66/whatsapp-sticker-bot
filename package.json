@@ -27,7 +27,7 @@
       "start": "node build/server.js",
       "dev": "nodemon",
       "build": "tsc -p .",
-      "test": "jest --no-cache"
+      "test": "jest --no-cache --detectOpenHandles"
    },
    "dependencies": {
       "express": "^4.17.2",
