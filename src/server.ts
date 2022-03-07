@@ -11,19 +11,27 @@ const app = express();
 app.get('/api', async (req, res) => {
    const CHARACTERS_PER_LINE = 15;
    const text: string = wrapText(req.query.text, CHARACTERS_PER_LINE);
+
    const fileName =
       text.replace(' ', '_').replace('\n', '_') +
       '_' +
       moment().format('YYYY-MM-DD_HH:mm:ss') +
       '.png';
 
-   const outputPath = path.join(__dirname, '..', 'assets', 'static', fileName);
+   const outputPath = path.join(
+      __dirname,
+      '..',
+      'public',
+      'stickers',
+      fileName
+   );
+
    const png = text2png(text, {
       font: '32px sans-serif',
       color: req.query.fontColor,
    });
    fs.writeFileSync(outputPath, png);
-   res.status(200).sendFile(outputPath);
+   res.status(200).download(outputPath);
 });
 
 app.listen(PORT, () => {

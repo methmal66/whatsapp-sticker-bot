@@ -18,10 +18,10 @@ Host it your self in a free linode server or use this [demo](http://sticker.what
 - Font coloer - query param 'fontColor'. Any valid color name (red, green, blue...)
 
 ## Output
-Display a png file
+Receive a png file
 
 ## Core Functionalities
 - Ability to change only two parameters, text and its color
 - Automatically wraps the given text
 - Image has static width and dynamic height
-- png file must be downloaded mannually
+- png file download automatically
