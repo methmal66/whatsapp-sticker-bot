@@ -31,7 +31,7 @@ app.get('/api', async (req, res) => {
       color: req.query.fontColor,
    });
    fs.writeFileSync(outputPath, png);
-   res.status(200).sendFile(outputPath);
+   res.status(200).download(outputPath);
 });
 
 app.listen(PORT, () => {
