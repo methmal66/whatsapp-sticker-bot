@@ -12,7 +12,7 @@ Host it your self in a free linode server or use this [demo](http://sticker.what
 ### Self Host
 `docker run -p 80:8000 -d methmal66/whatsapp-sticker-bot`
 ### Example usage of the above demo
-`http://sticker.whatsapp.bot.sanujamethmal.com?text=Hello+World&fontColor=red`
+`http://sticker.whatsapp.bot.sanujamethmal.com/api?text=Hello+World&fontColor=red`
 ## Inputs
 - Text - query param 'text'. The string you want to get a sticker of
 - Font coloer - query param 'fontColor'. Any valid color name (red, green, blue...)
